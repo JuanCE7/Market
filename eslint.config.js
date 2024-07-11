@@ -1,21 +1,19 @@
-import js from '@eslint/js';
-import globals from 'globals';
+const js = require('@eslint/js');
 
-export default [
-  js.configs.recommended,
-  {
-    files: ['**/*.js'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-    rules: {
-      // Aquí puedes añadir o sobrescribir reglas
-      'indent': ['error', 2],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
-    },
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true
   },
-];
+  extends: 'eslint:recommended',
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module'
+  },
+  rules: {
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'double'],
+    semi: ['error', 'always']
+  }
+};
